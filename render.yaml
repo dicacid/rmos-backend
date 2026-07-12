@@ -17,4 +17,4 @@ services:
 
 databases:
   - name: rmos-db
-    plan: starter
+    plan: free
