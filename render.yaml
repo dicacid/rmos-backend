@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: rmos-api
+    env: node
+    plan: starter
+    buildCommand: npm ci && npm run build && npm run migrate
+    startCommand: npm start
+    envVars:
+      - key: API_TOKEN
+        generateValue: true
+      - key: ALLOWED_ORIGIN
+        value: ""
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rmos-db
+          property: connectionString
+
+databases:
+  - name: rmos-db
+    plan: starter
